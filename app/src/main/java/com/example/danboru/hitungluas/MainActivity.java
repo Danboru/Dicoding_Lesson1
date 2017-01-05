@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
 
     EditText panjang, lebar;
     Button hitung;
-
     TextView hasilnya;
 
     @Override
@@ -22,10 +21,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //EditText view
+
         panjang = (EditText) findViewById(R.id.edt_panjang);
         lebar = (EditText) findViewById(R.id.edt_lebar);
 
+        //Button View
+
         hitung = (Button) findViewById(R.id.btn_hitung);
+
+        //Text View
 
         hasilnya = (TextView) findViewById(R.id.txt_tampildata);
 
@@ -38,29 +43,31 @@ public class MainActivity extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(panjang.getText()) || TextUtils.isEmpty(lebar.getText())){
 
+                    //Keadaan ketika salah satu editText tidak menerima inputan
+
                     Log.d("Hitung", "Tidak ada data yang di inputkan");
                     Toast.makeText(MainActivity.this,"Nilai yang dimasukkan tidak boleh kosong",Toast.LENGTH_SHORT).show();
 
-                }else {
+                } else {
 
                     double p, l, hasil;
 
-                    p = Double.parseDouble(panjangnya);
-                    l = Double.parseDouble(lebarnya);
+                    p = Double.parseDouble(panjangnya);//input panjang
+                    l = Double.parseDouble(lebarnya);//input lebar
 
                     try{
 
-                        hasil = p * l;
+                        hasil = p * l;//proses aritmatika
 
                         Log.d("Hitung", "Data Berhasil Di Hitung");
                         hasilnya.setText(String.valueOf(hasil));
 
                     }catch (ArithmeticException e){
 
+                        //penanganan kesalahan dalam aritmaka
                         Log.d("Perhitungan", "Terjjadi Kesalahan -- " + e.getMessage()  );
 
                     }
-
 
                 }
 
